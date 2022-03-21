@@ -3,7 +3,8 @@
 ### Erreur sur la fonction d'écriture de l'image:
 -------------------------------------------------
 
-Voici la fonction corrigé permettant de bien generer l'image output
+Il y a une erreur sur la fonction lors de la génération de l'image.
+Voici la fonction corrigé permettant de bien generer l'image output.ppm
 ```C
 void output_image_file(uchar4* image)
 {

@@ -29,7 +29,6 @@ void checkCUDAError(const char *msg);
 // Ex 2.1.1, (1/3)
 
 // Ex 2.2.1, (2/3)
-texture<uchar4, cudaTextureType2D, cudaReadModeElementType> sample2D;
 
 
 __global__ void image_blur(uchar4 *image, uchar4 *image_output) {
@@ -179,11 +178,10 @@ int main(void) {
 	cudaMemcpy(d_image, h_image, image_size, cudaMemcpyHostToDevice);
 	checkCUDAError("CUDA memcpy to device");
 
-	// Ex 2.3.1
-	// Options permettant de controle les conditions de bords
-	cudaChannelFormatDesc desc = cudaCreateChannelDesc<uchar4>();
-	sample2D.addressMode[0] = cudaAddressModeWrap;
-	sample2D.addressMode[1] = cudaAddressModeWrap;
+	// Ex 2.2.3
+	//cudaChannelFormatDesc desc = cudaCreateChannelDesc<uchar4>();
+	//sample2D.addressMode[0] = cudaAddressModeWrap;
+	//sample2D.addressMode[1] = cudaAddressModeWrap;
 
 	// definition du nombre de thread par blocs et de bloc par grille
 	dim3    blocksPerGrid(IMAGE_DIM / 16, IMAGE_DIM / 16);

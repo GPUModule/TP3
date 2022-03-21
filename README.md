@@ -137,7 +137,7 @@ __global__ void example3b(float const* __restrict__ a, float* b, int const*  __r
   b[index] = a[c[index]];
 }
 ```
-Dans notre example, les threads récuperent les informations des sphères mais de les modifient jamais.
+Dans notre example, les threads récuperent les informations des sphères mais ne les modifient jamais.
 
 ##### Modifier la fonction suivante de sorte à utiliser le cache de lecture seule pour les sphères  :
 
@@ -406,7 +406,15 @@ pixel = 0;
 
 #### 2.2.3 Decommenter les instructions suivante
 
-Dans la fonction main, commentez l'appel à **matMulKernel << < grid, threads >> >();** et décommentez l'appel à **matMulKernelSharedMemory << < grid, threads >> >();**
+```C
+	// Ex 2.2.3
+	//cudaChannelFormatDesc desc = cudaCreateChannelDesc<uchar4>();
+	//sample2D.addressMode[0] = cudaAddressModeWrap;
+	//sample2D.addressMode[1] = cudaAddressModeWrap;
+
+```
+
+Regardez dans la [doc de cuda sur les textures](https://docs.nvidia.com/cuda/cuda-c-programming-guide/#texture-memory) Essayez de comprendre et d'expliquer à quoi peut bien servir le mode **cudaAdressModeWrap**
 
 ```C
 	// Ex 2.2.3, (3/3) cudaBindTexture2D() est utilisé pour lier la texture CUDA à la mémoire que nous avons allouée.

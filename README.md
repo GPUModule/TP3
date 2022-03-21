@@ -25,6 +25,7 @@ Cette technique de rendu consiste, pour chaque pixel de l'image à générer, à
 Des rayons sont ensuite lancés depuis le point d'impact en direction de chaque source de lumière pour déterminer sa luminosité (est-il éclairé ou à l'ombre d'autres objets ?). Cette luminosité, combinée avec les propriétés de la surface de l'objet (sa couleur, sa rugosité, etc.), ainsi que d'autres informations éventuelles (angles entre la normale à l'objet et les sources de lumières, réflexions, transparence, etc...), déterminent la couleur finale du pixel.
 
 ![ray tracing](ray.png)
+
 Vous pouvez lire le chapitre 6 du livre CUDA by Example sur lequel cet exercice est basé (lien sur ametice). 
 
 Il y a beacoup d'éléments dans le squelette du programme exercice01.cu. Prenez le temps de comprendre de quoi il en retourne. Pour le moment, les kernels sont tous définit avec le même ensemble d'instructions. Ils font tous la même chose. Vous adapterez certains kernels pour utilisé le cache constant et le cache en lecture seule. Des explications sur ces caches vous seront fournis dans les exercices du TP.

@@ -1,5 +1,34 @@
 ## TP3 : Programmation GPU en CUDA
 
+### Erreur sur la fonction d'écriture de l'image:
+-------------------------------------------------
+
+Voici la fonction corrigé permettant de bien generer l'image output
+```C
+void output_image_file(uchar4* image)
+{
+	FILE *f; //Permet de contenir le fichier output.ppm
+
+	//ouvre le fichier output.ppm et ecris des info en en-tete
+	f = fopen("output.ppm", "wb");
+	if (f == NULL){
+		fprintf(stderr, "Error opening 'output.ppm' output file\n");
+		exit(1);
+	}
+	fprintf(f, "P6\n");
+	fprintf(f, "#Programmation GPU CUDA\n");
+	fprintf(f, "%d %d\n%d\n", IMAGE_DIM, IMAGE_DIM, 255);
+	for (int x = 0; x < IMAGE_DIM; x++){
+		for (int y = 0; y < IMAGE_DIM; y++){
+			int i = x + y*IMAGE_DIM;
+			fwrite(&image[i], sizeof(unsigned char), 3, f); //only write rgb (ignoring a)
+		}
+	}
+	
+	fclose(f);
+}
+```
+
 ### Objectifs du TP :
 ---------------------
 * Comprendre et observer les différences entre le cache constant (constant cache) et le cache de lecture seul (read-only cache)

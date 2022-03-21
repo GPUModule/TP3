@@ -254,7 +254,7 @@ void output_image_file(uchar4* image)
 		exit(1);
 	}
 	fprintf(f, "P6\n");
-	fprintf(f, "# COM4521 Lab 05 Exercise02\n");
+	fprintf(f, "# Programmation GPU CUDA\n");
 	fprintf(f, "%d %d\n%d\n", IMAGE_DIM, IMAGE_DIM, 255);
 	for (int x = 0; x < IMAGE_DIM; x++){
 		for (int y = 0; y < IMAGE_DIM; y++){

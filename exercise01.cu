@@ -255,8 +255,8 @@ void output_image_file(uchar4* image)
 		fprintf(stderr, "Error opening 'output.ppm' output file\n");
 		exit(1);
 	}
-	fprintf(f, "TP2\n");
-	fprintf(f, "Programmation GPU CUDA\n");
+	fprintf(f, "P6\n");
+	fprintf(f, "# Programmation GPU CUDA\n");
 	fprintf(f, "%d %d\n%d\n", IMAGE_DIM, IMAGE_DIM, 255);
 	for (int x = 0; x < IMAGE_DIM; x++){
 		for (int y = 0; y < IMAGE_DIM; y++){
